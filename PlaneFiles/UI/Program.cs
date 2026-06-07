@@ -33,6 +33,21 @@ do
             break;
         case "4":
             {
+                Console.WriteLine("Enter a new line: ");
+                var lineToRemove = Console.ReadLine();
+
+                list.RemoveAll(item => item.Equals(lineToRemove));
+                
+            }
+            break;
+        case "5":
+            {
+                list.Sort();
+
+            }
+            break;
+        case "6":
+            {
                 textFile.WriteLines(list.ToArray());
                 Console.WriteLine("Changes saved");
             }
@@ -51,8 +66,8 @@ string Menu()
     Console.WriteLine("2. Add line");
     Console.WriteLine("3. Remove one occurrence");
     Console.WriteLine("4. Remove all occurrence");
-    Console.WriteLine("4. Sort");
-    Console.WriteLine("4. Save changes");
+    Console.WriteLine("5. Sort");
+    Console.WriteLine("6. Save changes");
     Console.WriteLine("0. Exit");
     Console.WriteLine("Choose an option: ");
     return Console.ReadLine() ?? string.Empty;
