@@ -1,4 +1,8 @@
-﻿//using Core;
+﻿//==================================================
+// EXAMPLE 1
+//==================================================
+
+//using Core;
 //using System.ComponentModel.Design;
 //using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -84,21 +88,46 @@
 //    return Console.ReadLine() ?? string.Empty;
 //}
 
-using Core;
+//==========================================
+// EXAMPLE 2
+//==========================================
+//using Core;
 
-var people = new List<string[]>
+//var people = new List<string[]>
+//{
+//    new[] {"Id","Name","Age"},
+//    new[] {"1","Juan","51"},
+//    new[] {"2","Carlos","27"},
+//    new[] {"3","Emma","0"},
+//};
+
+//var manualCvsHelper = new ManualCvsHelper();
+//manualCvsHelper.WriteCSV("C:\\Users\\Carlos Gonzalez\\Documents\\cursos\\Estructura de Datos\\tmp\\people.csv", people);
+
+//var loadedPeople = manualCvsHelper.ReadCSV("C:\\Users\\Carlos Gonzalez\\Documents\\cursos\\Estructura de Datos\\tmp\\people.csv");
+//foreach(var person in loadedPeople)
+//{
+//    Console.WriteLine(string.Join("|", person));
+//}
+
+
+//===================================
+//EXAMPLE 3
+//===================================
+
+using Core;
+var list = new List<Person>()
 {
-    new[] {"Id","Name","Age"},
-    new[] {"1","Juan","51"},
-    new[] {"2","Carlos","27"},
-    new[] {"3","Emma","0"},
+    new() { Id=1,Name="Emma",Age=1},
+    new() { Id=2,Name="Carlos",Age=27},
+    new() { Id=3,Name="Dina",Age=26}
 };
 
-var manualCvsHelper = new ManualCvsHelper();
-manualCvsHelper.WriteCSV("C:\\Users\\Carlos Gonzalez\\Documents\\cursos\\Estructura de Datos\\tmp\\people.csv", people);
+var helper = new CvsHelperExample();
+helper.Write("C:\\Users\\Carlos Gonzalez\\Documents\\cursos\\Estructura de Datos\\tmp\\people2.csv", list);
+var people = helper.Read("C:\\Users\\Carlos Gonzalez\\Documents\\cursos\\Estructura de Datos\\tmp\\people2.csv");
 
-var loadedPeople = manualCvsHelper.ReadCSV("C:\\Users\\Carlos Gonzalez\\Documents\\cursos\\Estructura de Datos\\tmp\\people.csv");
-foreach(var person in loadedPeople)
+foreach (var p in people)
 {
-    Console.WriteLine(string.Join("|", person));
+    Console.WriteLine($"{p.Id}:{p.Name} ({p.Age} years old)");
 }
